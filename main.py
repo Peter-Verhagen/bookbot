@@ -15,7 +15,13 @@ from stats import sort_dict     #takes a dictionary, returns a list
 def main(filepath):
 
     new_dict={}
-    book_len = get_book_text(filepath)
+    try:
+        book_len = get_book_text(filepath[1])
+    except Exception as e:
+        print(f"Usage: python3 main.py <path_to_book>")
+        sys.exit(1)
+
+
     print(f"============ BOOKBOT ============")
     print(f"Analyzing book found at books/frankenstein.txt...")
     print(f"----------- Word Count ----------")
@@ -30,7 +36,5 @@ def main(filepath):
 
 
 
-
-
-main(sys.argv[1])
+main(sys.argv)
 #main(f"books/frankenstein.txt")
